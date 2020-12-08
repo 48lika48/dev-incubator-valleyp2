@@ -43,7 +43,6 @@
                                     <small class="mr-2">High priority</small>
                                     <small>11:00 01.01.2000</small>
                                 </div>
-
                             </div>
                             <p class="mb-1 w-100">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquid eaque eligendi error eveniet nostrum nulla pariatur repudiandae, veniam. Provident.</p>
                         </div>
@@ -51,7 +50,7 @@
                             <button class="btn btn-secondary h-100" type="button" id="dropdownMenuItem1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-ellipsis-v" aria-hidden="true"></i>
                             </button>
-                            <div class="dropdown-menu p-2 flex-column" aria-labelledby="dropdownMenuItem1" x-placement="left-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-2px, 0px, 0px);">
+                            <div class="dropdown-menu p-2 flex-column" aria-labelledby="dropdownMenuItem1" x-placement="left-start">
                                 <button type="button" class="btn btn-success w-100">Complete</button>
                                 <button type="button" class="btn btn-info w-100 my-2">Edit</button>
                                 <button type="button" class="btn btn-danger w-100">Delete</button>
@@ -118,7 +117,7 @@
                         <div class="form-group row">
                             <div class="col-sm-12 text-center">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Add task</button>
+                                <button onclick="addElement()" type="submit" id="addTask" class="btn btn-primary">Add task</button>
                             </div>
                         </div>
                     </form>

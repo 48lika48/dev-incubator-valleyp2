@@ -2,3 +2,11 @@
     min-height: calc(100vh - 15px);
     margin: 15px auto 0;
 }
+
+.dropdown div {
+    position: absolute; 
+    will-change: transform; 
+    top: 0px; 
+    left: 0px; 
+    transform: translate3d(-2px, 0px, 0px);
+}
