@@ -1,20 +1,52 @@
 let currentTasks = document.getElementById("currentTasks");
 let inputTitle = document.getElementById("inputTitle");
+let taskTitle = document.getElementById("taskTitle");
 let inputText = document.getElementById("inputText");
+let taskText = document.getElementById("taskText");
+let checkOption = document.getElementById("checkOption");
+
+// let userTitle;
+// let userText;
+// function title_value(o) {
+//     userTitle = o.value
+//     console.log(userTitle);
+// }
+// function text_value(o) {
+//     userText = o.value
+//     console.log(userText);
+// }
+
+
+// oninput = function getTaskTitle() {
+//     taskTitle.innerHTML = inputTitle.value;
+// };
+
+console.log(Array.from(checkOption.children));
+
+// function getCheckOption(event) {
+//     let target = event.target;
+//     console.log(target);
+
+//   };
 
 // date
-let date = new Date();
-let hours = date.getHours();
-let minutes = date.getMinutes();
-let ourTime = hours + ":" + minutes;
+function getDate() {
+    let date = new Date();
+    let hours = date.getHours();
+    if (hours < 10) hours = '0' + hours;
+    let minutes = date.getMinutes();
+    if (minutes < 10) minutes = '0' + minutes;
+    let ourTime = hours + ":" + minutes;
 
-let day = date.getDate();
-if (day < 10) day = '0' + day;
-let month = date.getMonth() + 1;
-if (month < 10) month = '0' + month;
-let year = date.getFullYear();
-let ourDate = day + "." + month + "." + year;
-let allDate = ourTime + " " + ourDate;
+    let day = date.getDate();
+    if (day < 10) day = '0' + day;
+    let month = date.getMonth() + 1;
+    if (month < 10) month = '0' + month;
+    let year = date.getFullYear();
+    let ourDate = day + "." + month + "." + year;
+    let fullDate = ourTime + " " + ourDate;
+    return fullDate;
+}
 
 // add task
 function addElement() {
@@ -27,30 +59,29 @@ function addElement() {
     taskDiv.classList.add('d-flex', 'w-100', 'justify-content-between');
     let title = document.createElement("h5");
     title.classList.add('mb-1');
-    // title.innerHTML = inputTitle.target.value;
-    title.innerHTML = "123123123";
+    title.setAttribute("id", "taskTitle");
+    // title.innerHTML = userTitle;
     let detailsDiv = document.createElement("div");
     let priority = document.createElement("small");
     priority.classList.add('mr-2');
     priority.innerHTML = "High priority";
     let date = document.createElement("small");
-    date.innerHTML = allDate;
-    let description = document.createElement("p");
-    description.classList.add('mb-1', 'w-100');
-    // description.innerHTML = inputText.target.value;
-    description.innerHTML = "target.value";
+    date.innerHTML = getDate();
+    let text = document.createElement("p");
+    text.classList.add('mb-1', 'w-100');
+    text.setAttribute("id", "taskText");
+    // text.innerHTML = userText;
 
     infoDiv.appendChild(taskDiv);
     taskDiv.appendChild(title);
     taskDiv.appendChild(detailsDiv);
     detailsDiv.appendChild(priority);
     detailsDiv.appendChild(date);
-    infoDiv.appendChild(description);
+    infoDiv.appendChild(text);
     newLi.appendChild(infoDiv);
 
     let dropDiv = document.createElement("div");
     dropDiv.classList.add('dropdown', 'm-2', 'dropleft');
-
     let dropButton = document.createElement("button");
     dropButton.classList.add('btn', 'btn-secondary', 'h-100');
     dropButton.setAttribute("type", "button");
@@ -58,11 +89,9 @@ function addElement() {
     dropButton.setAttribute("data-toggle", "dropdown");
     dropButton.setAttribute("aria-haspopup", "true");
     dropButton.setAttribute("aria-expanded", "false");
-
     let dropI = document.createElement("i");
     dropI.classList.add('fas', 'fa-ellipsis-v');
     dropI.setAttribute("aria-hidden", "true");
-
     let dropMenu = document.createElement("div");
     dropMenu.classList.add('dropdown-menu', 'p-2', 'flex-column');
     dropMenu.setAttribute("aria-labelledby", "dropdownMenuItem1");
@@ -70,22 +99,19 @@ function addElement() {
     dropMenu.setAttribute("data-toggle", "dropdown");
     dropMenu.setAttribute("aria-haspopup", "true");
     dropMenu.setAttribute("aria-expanded", "false");
-    
     let dropComplete = document.createElement("button");
     dropComplete.classList.add('btn', 'btn-success', 'w-100');
     dropComplete.setAttribute("type", "button");
     dropComplete.innerHTML = "Complete";
-
     let dropEdit = document.createElement("button");
     dropEdit.classList.add('btn', 'btn-info', 'w-100', 'my-2');
     dropEdit.setAttribute("type", "button");
     dropEdit.innerHTML = "Edit";
-
     let dropDelete = document.createElement("button");
     dropDelete.classList.add('btn', 'btn-danger', 'w-100');
     dropDelete.setAttribute("type", "button");
     dropDelete.innerHTML = "Delete";
-    
+
     dropDiv.appendChild(dropButton);
     dropButton.appendChild(dropI); 
     dropDiv.appendChild(dropMenu);
