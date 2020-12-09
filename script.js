@@ -1,9 +1,22 @@
-let addTask = document.getElementById("addTask");
 let currentTasks = document.getElementById("currentTasks");
+let inputTitle = document.getElementById("inputTitle");
+let inputText = document.getElementById("inputText");
 
-console.log(addTask);
-console.log(currentTasks);
+// date
+let date = new Date();
+let hours = date.getHours();
+let minutes = date.getMinutes();
+let ourTime = hours + ":" + minutes;
 
+let day = date.getDate();
+if (day < 10) day = '0' + day;
+let month = date.getMonth() + 1;
+if (month < 10) month = '0' + month;
+let year = date.getFullYear();
+let ourDate = day + "." + month + "." + year;
+let allDate = ourTime + " " + ourDate;
+
+// add task
 function addElement() {
     let newLi = document.createElement("li");
     newLi.classList.add('list-group-item', 'd-flex', 'w-100', 'mb-2');
@@ -14,16 +27,18 @@ function addElement() {
     taskDiv.classList.add('d-flex', 'w-100', 'justify-content-between');
     let title = document.createElement("h5");
     title.classList.add('mb-1');
-    title.innerHTML = "Title";
+    // title.innerHTML = inputTitle.target.value;
+    title.innerHTML = "123123123";
     let detailsDiv = document.createElement("div");
     let priority = document.createElement("small");
     priority.classList.add('mr-2');
     priority.innerHTML = "High priority";
     let date = document.createElement("small");
-    date.innerHTML = "11:00 01.01.2000";
+    date.innerHTML = allDate;
     let description = document.createElement("p");
     description.classList.add('mb-1', 'w-100');
-    description.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquid eaque eligendi error eveniet nostrum nulla pariatur repudiandae, veniam. Provident.";
+    // description.innerHTML = inputText.target.value;
+    description.innerHTML = "target.value";
 
     infoDiv.appendChild(taskDiv);
     taskDiv.appendChild(title);
@@ -82,3 +97,7 @@ function addElement() {
     
     console.log(newLi);
 }
+
+// function deleteElement() {
+//     currentTasks.removeChild(newLi);
+// }
