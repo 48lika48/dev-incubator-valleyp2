@@ -4,30 +4,9 @@ let taskTitle = document.getElementById("taskTitle");
 let inputText = document.getElementById("inputText");
 let taskText = document.getElementById("taskText");
 let checkOption = document.getElementById("checkOption");
-
-// let userTitle;
-// let userText;
-// function title_value(o) {
-//     userTitle = o.value
-//     console.log(userTitle);
-// }
-// function text_value(o) {
-//     userText = o.value
-//     console.log(userText);
-// }
-
-
-// oninput = function getTaskTitle() {
-//     taskTitle.innerHTML = inputTitle.value;
-// };
-
-console.log(Array.from(checkOption.children));
-
-// function getCheckOption(event) {
-//     let target = event.target;
-//     console.log(target);
-
-//   };
+let low = document.getElementById("Low");
+let medium = document.getElementById("Medium");
+let high = document.getElementById("High");
 
 // date
 function getDate() {
@@ -60,17 +39,21 @@ function addElement() {
     let title = document.createElement("h5");
     title.classList.add('mb-1');
     title.setAttribute("id", "taskTitle");
-    // title.innerHTML = userTitle;
+    title.innerHTML = inputTitle.value;
     let detailsDiv = document.createElement("div");
     let priority = document.createElement("small");
     priority.classList.add('mr-2');
-    priority.innerHTML = "High priority";
+    let taskPriority;
+    if(low.checked) {taskPriority = low.value;}
+    if(medium.checked) {taskPriority = medium.value;}
+    if(high.checked) {taskPriority = high.value;}
+    priority.innerHTML = taskPriority + " priority";
     let date = document.createElement("small");
     date.innerHTML = getDate();
     let text = document.createElement("p");
     text.classList.add('mb-1', 'w-100');
     text.setAttribute("id", "taskText");
-    // text.innerHTML = userText;
+    text.innerHTML = inputText.value;
 
     infoDiv.appendChild(taskDiv);
     taskDiv.appendChild(title);
