@@ -93,7 +93,9 @@ function addElement() {
     let dropDelete = document.createElement("button");
     dropDelete.classList.add('btn', 'btn-danger', 'w-100');
     dropDelete.setAttribute("type", "button");
+    dropDelete.setAttribute("onclick", "deleteElement(event)");
     dropDelete.innerHTML = "Delete";
+
 
     dropDiv.appendChild(dropButton);
     dropButton.appendChild(dropI); 
@@ -107,6 +109,10 @@ function addElement() {
     console.log(newLi);
 }
 
-// function deleteElement() {
-//     currentTasks.removeChild(newLi);
-// }
+function deleteElement(event) {
+    let target = event.target;
+    let closest = target.closest(".list-group-item");
+    if(closest){
+        currentTasks.removeChild(closest);
+    }
+}
